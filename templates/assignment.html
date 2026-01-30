@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>Assignment Tracker</h1>
+        <p>Get guidance and track deadlines</p>
+
+        <form method="post">
+            <input type="text" name="assignment"
+                   placeholder="Assignment name" required>
+
+            <input type="text" name="aim"
+                   placeholder="Aim of the assignment" required>
+
+            <input type="date" name="due_date" required>
+
+            <button type="submit">Generate Guidance</button>
+        </form>
+
+        {% if guidance %}
+            <h3>Guidance Plan</h3>
+            {% for step in guidance %}
+                <p>{{ step }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <a href="/">← Back to Home</a>
+    </div>
+</div>
+</body>
+</html>
